@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Quizoot!</title>
+	<style>
+		html {
+			max-width: 640px;
+		}
+
+		textarea {
+			width: 100%;
+			height: 100px;
+		}
+
+		img {
+			max-width: 100%;
+			border: 1px solid;
+		}
+	</style>
+</head>
+
+<body>
+	<h1>Quizoot!</h1>
+	<form action="/quizoot" method="post">
+		<textarea type="text" name="quizlet" placeholder="Paste your Quizlet export (with the settings shown below) here...">
+George Washington - 1st U.S. President
+John Adams - 2nd U.S. President
+Thomas Jefferson - 3rd U.S. President
+James Madison - 4th U.S. President</textarea>
+  <p><strong>Enter the export settings you chose on Quizlet here.</strong> <a target="_blank" href="export.png">How to export</a></p>
+  <label for="td">Between term and definition:</label>
+  <input type="text" name="td" value=" - ">
+  <br>
+  <label for="row">Between rows:</label>
+  <input type="text" name="row" value="\n">
+  <p>If you have trouble, change "Between term and definition" to something less commonly used, like a pipe (|). <em>Don't forget to export again on Quizlet with the same settings.</em></p>
+  <p><strong>Kahoot Settings</strong></p>
+  <label for="time">Time limit in seconds</label>
+  <select name="time">
+    <option value="5">5</option>
+    <option value="10">10</option>
+    <option value="20" selected>20</option>
+    <option value="30">30</option>
+    <option value="60">60</option>
+    <option value="90">90</option>
+    <option value="120">120</option>
+  </select>
+  <br>
+  <label for="max">Max amount of answers</label>
+  <select name="max">
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4" selected>4</option>
+  </select>
+  <br>
+  <input type="checkbox" name="shuffle" value="shuffle">
+  <label for="shuffle">Shuffle question order?</label>
+  <p><strong>Question/Answer Prefixes and Suffixes</strong></p>
+  <input type="text" list="qprefix" name="qprefix"> <i>(question)</i> <input type="text" list="qsuffix" name="qsuffix">
+  <br>
+  <input type="text" list="aprefix" name="aprefix"> <i>(answer)</i> <input type="text" list="asuffix" name="asuffix">
+  <br>
+  <datalist id="qprefix">
+    <option value="Who is ">
+    <option value="What is ">
+    <option value="Where is ">
+    <option value="When is ">
+    <option value="Who was ">
+    <option value="What was ">
+    <option value="Where was ">
+    <option value="When was ">
+  </datalist>
+  <datalist id="qsuffix">
+    <option value="?">
+    <option value=".">
+    <option value="!">
+    <option value="...">
+  </datalist>
+  <datalist id="aprefix">
+    <option value="He is ">
+    <option value="She is ">
+    <option value="It is ">
+    <option value="They are ">
+    <option value="He was ">
+    <option value="She was ">
+    <option value="It was ">
+    <option value="They were ">
+    <option value="...">
+  </datalist>
+  <datalist id="asuffix">
+    <option value="?">
+    <option value=".">
+    <option value="!">
+    <option value="...">
+  </datalist>
+  <br>
+  <button>Download Kahoot! Spreadsheet</button>
+  <a target="_blank" href="kahoot.png">How to import</a>
+</form>
+</body>
+</html>

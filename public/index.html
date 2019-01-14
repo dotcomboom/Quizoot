@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Convert Quizlet study sets into Kahoot quizzes online.">
+    <meta name="author" content="dotcomboom">
+    <link rel="shortcut icon" href="/img/quizoot.png">
+
+    <title>Quizoot!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootswatch.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <!--<link href="css/one-page-wonder.min.css" rel="stylesheet">-->
+
+    <style>
+        .center {
+            text-align: center;
+        }
+        section {
+            margin-bottom: 10px;
+        }
+        .quizlet {
+          color: #4159AC;
+        }
+        .kahoot {
+          color: #8A44BD;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Quizoot!</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!--<div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Log In</a>
+            </li>
+          </ul>
+        </div>
+        -->
+        </div>
+    </nav>
+
+    <header class="masthead text-center text-white" style="margin-top: 70px">
+        <div class="masthead-content">
+            <div class="container">
+                <h1>Quizoot!</h1>
+                <h3>Convert <a target="_blank" href="https://quizlet.com" class="quizlet"><strong>Quizlet</strong></a> study sets into <a target="_blank" href="https://kahoot.com" class="kahoot"><strong>Kahoot!</strong></a> quizzes</h3>
+            </div>
+        </div>
+        <div class="bg-circle-1 bg-circle"></div>
+        <div class="bg-circle-2 bg-circle"></div>
+        <div class="bg-circle-3 bg-circle"></div>
+        <div class="bg-circle-4 bg-circle"></div>
+    </header>
+
+    <section>
+        <div class="container">
+            <!--<div class="row align-items-center">
+          <div class="col-lg-6 order-lg-2">
+            <div class="p-5">
+              <img class="img-fluid rounded-circle" src="kahoot.png" alt="">
+            </div>
+          </div>-->
+            <div>
+                <div class="p-5">
+                    <section>
+                        <h2>Quizlet Exported Set</h2> 
+                        <p><a target="_blank" href="export.png">How to export from Quizlet</a>
+                        </p>
+                        <form class="form-group" action="/quizoot" method="post">
+                            <textarea class="form-control" name="quizlet" placeholder="Paste your Quizlet export (with the settings shown below) here..." rows="15">George Washington - 1st U.S. President
+John Adams - 2nd U.S. President
+Thomas Jefferson - 3rd U.S. President
+James Madison - 4th U.S. President</textarea>
+                        <div class="row">
+                            <div class="col">
+                                <label for="td">Between term and definition:</label>
+                                <input class="form-control" type="text" name="td" value=" - ">
+                            </div>
+                            <div class="col">
+                                <label for="row">Between rows:</label>
+                                <input class="form-control" type="text" name="row" value="\n">
+                            </div>
+                        </div>
+                        <p class="p-3 mb-2 bg-primary text-white" style="margin-top: 10px;">For best results, keep your terms less than 95 characters and definitions less than 65 characters. Note that these numbers include prefixes and suffixes if you set them later.
+                                </p>
+                        <p class="p-3 mb-2 bg-primary text-white" style="margin-top: 10px;">If you have trouble, change "Between term and definition" to something less commonly used, like a pipe (|). <em>Don't forget to export again on Quizlet with the same settings.</em>
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Kahoot Settings</h3>
+                        <div class="row">
+                            <div class="col">
+                                <label for="time">Time limit in seconds</label>
+                                <select name="time" class="form-control custom-select">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20" selected>20</option>
+                                    <option value="30">30</option>
+                                    <option value="60">60</option>
+                                    <option value="90">90</option>
+                                    <option value="120">120</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="max">Max amount of answers</label>
+                                <select name="max" class="form-control custom-select">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" name="shuffle" value="shuffle">
+                            <label class="form-check-label" for="shuffle">Shuffle question order?</label>
+                        </div>
+                    </section>
+                    <section>
+                        <h2>Question/Answer Prefixes and Suffixes</h2>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" list="qprefix" name="qprefix" placeholder="Prefix">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" readonly placeholder="Question">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" list="qsuffix" name="qsuffix" placeholder="Suffix">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" list="aprefix" name="aprefix" placeholder="Prefix">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" readonly placeholder="Answer">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" list="asuffix" name="asuffix" placeholder="Suffix">
+                            </div>
+                        </div>
+                        <datalist id="qprefix">
+                            <option value="Who is ">
+                                <option value="What is ">
+                                    <option value="Where is ">
+                                        <option value="When is ">
+                                            <option value="Who was ">
+                                                <option value="What was ">
+                                                    <option value="Where was ">
+                                                        <option value="When was ">
+                        </datalist>
+                        <datalist id="qsuffix">
+                            <option value="?">
+                                <option value=".">
+                                    <option value="!">
+                                        <option value="...">
+                        </datalist>
+                        <datalist id="aprefix">
+                            <option value="He is ">
+                                <option value="She is ">
+                                    <option value="It is ">
+                                        <option value="They are ">
+                                            <option value="He was ">
+                                                <option value="She was ">
+                                                    <option value="It was ">
+                                                        <option value="They were ">
+                                                            <option value="...">
+                        </datalist>
+                        <datalist id="asuffix">
+                            <option value="?">
+                                <option value=".">
+                                    <option value="!">
+                                        <option value="...">
+                        </datalist>
+                        <br>
+                        <button class="btn btn-primary">Download Kahoot! Spreadsheet</button>
+                        <a target="_blank" href="kahoot.png" class="btn btn-secondary">How to import to Kahoot!</a>
+                    </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
